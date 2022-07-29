@@ -10,14 +10,19 @@ if (localStorage.getItem('todo')){
     displayMessages();
 };
 
-let check = document.querySelector('input[type=checkbox]');
+let delbtn = document.querySelector('.btndel');
+delbtn.addEventListener('click', (event) => {
+    let valueLabel = todo.querySelector('[for='+event.target.getAttribute('id') + ']').innerHTML
+    alert (valueLabel)
+})
 
  todo.addEventListener('change', (event) => {
     let valueLabel = todo.querySelector('[for='+event.target.getAttribute('id') + ']').innerHTML
     todoList.forEach ((item) => {
         if (item.todo === valueLabel){
             item.checked = !item.checked
-        }
+            localStorage.setItem('todo', JSON.stringify(todoList))
+                }
     })
     console.log(todoList);
 
@@ -33,6 +38,8 @@ let check = document.querySelector('input[type=checkbox]');
     todoList.push(newTodo)
     displayMessages();
     localStorage.setItem('todo', JSON.stringify(todoList));
+    document.querySelector('.message').value = ''
+
  })
 
  function displayMessages() {
@@ -43,6 +50,7 @@ let check = document.querySelector('input[type=checkbox]');
         <li>
          <input type ='checkbox' id='item_${i}' ${item.checked ? 'true' : 'false'}>
          <label for = 'item_${i}'>${item.todo}</label>
+         <button class ='btndel'>удалить</button>
         </li>
          `;
         todo.innerHTML = displayMessage;
@@ -50,4 +58,16 @@ let check = document.querySelector('input[type=checkbox]');
     })
  }
 
- 
+ function deleteMessages(){
+
+
+
+    if (confirm('Точно удалить?')){
+        todoArray = JSON.parse(localStorage.getItem(todo));
+        const newList = todoArray.filter(obj => obj.id != item.id);
+        localStorage.setItem(key, JSON.stringify(newList));
+            
+    
+    item.remove();}
+
+ }

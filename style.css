@@ -5,6 +5,7 @@ body {
     box-sizing: content-box; }
   
   .container {
+    
     margin: 0 auto;
     padding-top: 50px; }
   
@@ -57,7 +58,7 @@ body {
   input[type=checkbox], label {
     display: inline-block;
     vertical-align: middle;
-    margin: 5px;
+    margin: 15px;
     cursor: pointer; }
   
   input[type=checkbox] + label:before {
@@ -86,3 +87,19 @@ body {
     border-radius: 0;
     margin: 0 15px 5px 5px; }
   
+   li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+   }
+   
+    .btndel{
+
+        align-self: flex-end;
+        width: 80px;
+   
+    cursor: pointer;
+
+
+    }
