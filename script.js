@@ -1,6 +1,20 @@
 let addMessage = document.querySelector('.message');
 let addButton = document.querySelector('.add');
 let  todo = document.querySelector('.todo')
+const disableButton = () => {document.querySelector('.add').disabled = true;}
+disableButton();
+
+addMessage.addEventListener('input', () => {
+    if(addMessage.value.length < 1){
+        disableButton
+    } else{
+    document.querySelector('.add').disabled = false;}
+   
+
+})
+
+
+
 
 
 let todoList = []; 
@@ -30,6 +44,13 @@ delbtn.addEventListener('click', (event) => {
  })
 
  addButton.addEventListener('click', () => {
+    if (addMessage.value.length > 0) {
+       //addButtonState.disabled = !addButtonState.disabled
+        document.querySelector('.add').disabled = false;
+    } 
+    
+
+
     let newTodo = {
         todo: addMessage.value,
         checked: false,
@@ -43,6 +64,7 @@ delbtn.addEventListener('click', (event) => {
  })
 
  function displayMessages() {
+    
     let displayMessage = '';
     
     todoList.forEach((item, i) => {
@@ -71,3 +93,8 @@ delbtn.addEventListener('click', (event) => {
     item.remove();}
 
  }
+
+ todo.addEventListener('contextmenu', (e) => {
+   e.preventDefault();
+
+ })
