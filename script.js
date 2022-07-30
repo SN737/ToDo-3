@@ -2,7 +2,7 @@ let addMessage = document.querySelector('.message');
 let addButton = document.querySelector('.add');
 let todo = document.querySelector('.todo');
 let idCounter = idCount();
-let newCounter = idCounter +1; 
+
 
 
 function idCount(){
@@ -66,7 +66,7 @@ if (localStorage.getItem('todo')){
         document.querySelector('.add').disabled = false;
     } 
     
-
+    let idCounter = idCount() + 1;
 
     let newTodo = {
         todo: addMessage.value,
@@ -75,20 +75,28 @@ if (localStorage.getItem('todo')){
         idn: ''
     };
     todoList.push(newTodo);
+   
+    alert( idCounter);
+    localStorage.setItem('idCounter', JSON.stringify(idCounter));
     
-    displayMessages(newCounter);
+    displayMessages(idCounter);
     localStorage.setItem('todo', JSON.stringify(todoList));
     document.querySelector('.message').value = '';
 
  });
 
- function displayMessages(newCounter) {
+ function displayMessages(idCounter) {
     
     let displayMessage = '';
     
     
     todoList.forEach((item, i) => {
-        item.idn = newCounter;
+       if (JSON.parse(localStorage.getItem('todo'.idn) === null))
+            {item.idn = JSON.parse(localStorage.getItem('idCounter'));
+        } else {  
+            item.idn = JSON.parse(localStorage.getItem('todo'.idn));
+
+        }
         
         displayMessage += `
         <li>
@@ -99,7 +107,8 @@ if (localStorage.getItem('todo')){
          `;
         todo.innerHTML = displayMessage;
         
-        localStorage.setItem('idCounter', JSON.stringify(item.idn));
+        console.log(item.idn)
+        //localStorage.setItem('todo', JSON.stringify(item.idn));
        
 
     });
