@@ -1,6 +1,21 @@
 let addMessage = document.querySelector('.message');
 let addButton = document.querySelector('.add');
-let  todo = document.querySelector('.todo');
+let todo = document.querySelector('.todo');
+let idCounter = idCount();
+let newCounter = idCounter +1; 
+
+
+function idCount(){
+    if (localStorage.getItem('idCounter')){
+        alert ('B LS есть значение ');
+        return  JSON.parse(localStorage.getItem('idCounter'));
+    }else { alert ('B LS добавляем значение ');
+       let  idCounter = 0;
+    localStorage.setItem('idCounter', JSON.stringify(idCounter));
+        return idCounter; }
+    
+}
+
 
 
 
@@ -40,7 +55,7 @@ if (localStorage.getItem('todo')){
                 }
     });
     
-    displayMessages();
+    displayMessages(idCounter);
 
 
  });
@@ -61,26 +76,30 @@ if (localStorage.getItem('todo')){
     };
     todoList.push(newTodo);
     
-    displayMessages();
+    displayMessages(newCounter);
     localStorage.setItem('todo', JSON.stringify(todoList));
     document.querySelector('.message').value = '';
 
  });
 
- function displayMessages() {
+ function displayMessages(newCounter) {
     
     let displayMessage = '';
     
+    
     todoList.forEach((item, i) => {
+        item.idn = newCounter;
+        
         displayMessage += `
         <li>
          <input type ='checkbox' id='item_${i}' ${item.checked ? 'true' : 'false'}>
          <label id = ${i} for = 'item_${i}'>${item.todo}</label>
-         <button id = '${i}' class = 'btndel'>удалить</button>
+         <button id = '${item.idn}' class = 'btndel'>удалить</button>
         </li>
          `;
         todo.innerHTML = displayMessage;
-        item.idn = i;
+        
+        localStorage.setItem('idCounter', JSON.stringify(item.idn));
        
 
     });
