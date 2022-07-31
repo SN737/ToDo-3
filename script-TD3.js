@@ -10,6 +10,13 @@ let  todo = document.querySelector('.todo');
 
 checkLocalstorage();
 
+
+function markAsDone(doneBtn, tdItem){
+    doneBtn.addEventListener('click', ()=> {
+        tdItem.classList.toggle('done');
+    })
+}
+
 addMessage.addEventListener('input', () => {
     if(!addMessage.value.length){
         addButton.disabled = true;
@@ -28,6 +35,9 @@ addButton.addEventListener('click', (e) => {
     checkLocalstorage();
     
 });
+
+
+
 
 
 function checkLocalstorage() {
@@ -55,7 +65,8 @@ function checkLocalstorage() {
                 let toDoName = obj.name;
                 let idFromlocalstorage = obj.id;
                 //alert ('идём рисовать тудуху');
-                displayMessages(toDoName, idFromlocalstorage);
+                const todoItem = displayMessages(toDoName, idFromlocalstorage);
+                markAsDone(todoItem.doneBtn, todoItem.tdItem);
                 }
                 
             }
@@ -64,6 +75,14 @@ function checkLocalstorage() {
 }
 
 function createToDoItem(name, idFromlocalstorage) {
+
+    // switch(idFromlocalstorage) {
+    //     case true: 
+    //     id = idFromlocalstorage;
+    //     break;
+    //     case false: 
+    //     id = id + 1;
+    //     break;}
 
 
     const createItem = (arr) => {
@@ -92,15 +111,9 @@ function createToDoItem(name, idFromlocalstorage) {
     
     //alert ('пришли - рисуем')
 
-     // switch(idFromlocalstorage) {
-    //     case true: 
-    //     id = idFromlocalstorage;
-    //     break;
-    //     case false: 
-    //     id = id + 1;
-    //     break;
+     
 
-    // }
+    
 
     const tdItem = document.createElement('li');
     const btnWrapper = document.createElement('div');
@@ -116,6 +129,8 @@ function createToDoItem(name, idFromlocalstorage) {
 
     tdItem.append(btnWrapper);
     todo.append(tdItem);
+
+    
 
     return {
         tdItem,

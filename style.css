@@ -91,6 +91,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: aliceblue;
    
    }
    
@@ -101,5 +102,12 @@ body {
    
     cursor: pointer;
 
+
+    }
+
+    .done {
+font-style: italic;
+text-decoration: line-through;
+color: #000;
 
     }
