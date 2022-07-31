@@ -5,7 +5,7 @@ const addMessage = document.querySelector('.input');
 const addButton = document.querySelector('.addbtn');
 const todo = document.querySelector('.todo')
 
-
+checkLocalstorage();
 
 addMessage.addEventListener('input', () => {
     if(!addMessage.value.length){
@@ -17,7 +17,7 @@ addMessage.addEventListener('input', () => {
 
 
 addButton.addEventListener('click', () => {
-    checkLocalstorage();
+    
     createToDoItem(addMessage.value);
     
 });
@@ -28,15 +28,56 @@ function checkLocalstorage() {
         if (localStorageData == null) {
             todoArray = [];
             } else {
-                todoArray = JSON.parse(localStorageData);
+                todoArray =  JSON.parse(localStorage.getItem(key));
+                console.log(todoArray);
+                for (const obj of todoArray) {
+                let toDoName = obj.name;
+                let idFromlocalstorage = obj.id;
+                displayMessages(toDoName, idFromlocalstorage);}
             }
+
 
 }
 
+function createToDoItem(name, idFromlocalstorage) {
 
-const createToDoItem = (name) => {
+   
+    
+    
 
-    alert(name);
+    const createItem = (arr) => {
+        const itemObj = {};
+        itemObj.name = addMessage.value;
+        itemObj.id = id;
+        //itemObj.done = completeTodoItem;
+        itemObj.done = false;
+
+        arr.push(itemObj);
+
+    };
+    createItem(todoArray);
+    localStorage.setItem(key, JSON.stringify(todoArray));
+    
+
+    addMessage.value ='';
+    displayMessages();
+
+
+   
+  };
+
+  function displayMessages(name, idFromlocalstorage){
+
+     // switch(idFromlocalstorage) {
+    //     case true: 
+    //     id = idFromlocalstorage;
+    //     break;
+    //     case false: 
+    //     id = id + 1;
+    //     break;
+
+    // }
+
     const tdItem = document.createElement('li');
     const btnWrapper = document.createElement('div');
     const doneBtn = document.createElement('button');
@@ -50,24 +91,7 @@ const createToDoItem = (name) => {
     doneBtn.classList.add('btndel');
 
     tdItem.append(btnWrapper);
-
-    const createItem = (arr) => {
-        const itemObj = {};
-        itemObj.name = addMessage.value;
-        itemObj.id = id + 1;
-        //itemObj.done = completeTodoItem;
-        itemObj.done = false;
-
-        arr.push(itemObj);
-
-    };
-    createItem(todoArray);
-    localStorage.setItem(key, JSON.stringify(todoArray));
     todo.append(tdItem);
-
-    addMessage.value ='';
-
-
 
     return {
         tdItem,
@@ -75,9 +99,8 @@ const createToDoItem = (name) => {
         deleteBtn, 
         btnWrapper
     };
-  };
 
-  
+  }
 
     
 
