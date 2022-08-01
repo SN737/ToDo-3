@@ -80,8 +80,9 @@ function checkLocalstorage() {
                 for (const obj of todoArray) {
                     let toDoName = obj.name;
                     let idFromlocalstorage = obj.id;
+                    let done = obj.done;
                 //alert ('идём рисовать тудуху');
-                     const todoItem = displayMessages(toDoName, idFromlocalstorage);
+                     const todoItem = displayMessages(toDoName, idFromlocalstorage, done);
                     markAsDone(todoItem.doneBtn, todoItem.tdItem);
                 }
                 return todoArray;
@@ -110,7 +111,7 @@ function createToDoItem(name, idFromlocalstorage) {
     addMessage.value ='';
 }
 
-  function displayMessages(name, idFromlocalstorage){
+  function displayMessages(name, idFromlocalstorage, done){
     
     //alert ('пришли - рисуем')
 
@@ -129,9 +130,12 @@ function createToDoItem(name, idFromlocalstorage) {
     doneBtn.setAttribute('id', idFromlocalstorage);
     deleteBtn.setAttribute('id', idFromlocalstorage);
     
-
     tdItem.append(btnWrapper);
     todo.append(tdItem);
+
+    if (done) {
+        tdItem.classList.add('done');
+    }
 
     return {
         tdItem,
