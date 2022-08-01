@@ -1,4 +1,4 @@
-let todoArray = [];
+
 let key = 'Todo-M4';
 let id = 0;
 const addMessage = document.querySelector('.input');
@@ -6,15 +6,35 @@ const addButton = document.querySelector('.addbtn');
 const wrapper = document.querySelector('.wrapper');
 
 let  todo = document.querySelector('.todo');
+let todoArray = checkLocalstorage();
 
 
-checkLocalstorage();
+//checkLocalstorage();
+
+function idCounter(){
+    let localStorageData = localStorage.getItem(key+'id');
+    if (localStorageData == null) {
+        id = 0;
+        return id;    
+    } else {
+
+    let arr =  JSON.parse(localStorage.getItem(key+'id'));
+   
+    id = arr;
+    alert(id);
+    return id;}
+
+}
 
 
 function markAsDone(doneBtn, tdItem){
     doneBtn.addEventListener('click', ()=> {
         tdItem.classList.toggle('done');
-    })
+
+        // localStorage.setItem(key, JSON.stringify(tditem));
+        // tdItem.id 
+        
+    });
 }
 
 addMessage.addEventListener('input', () => {
@@ -53,6 +73,7 @@ function checkLocalstorage() {
             todoArray = [];
             
             } else {
+
                 //alert ('данные есть идём сюда')
                 let todoArray =  JSON.parse(localStorage.getItem(key));
                 console.log(todoArray);
@@ -68,7 +89,7 @@ function checkLocalstorage() {
                 const todoItem = displayMessages(toDoName, idFromlocalstorage);
                 markAsDone(todoItem.doneBtn, todoItem.tdItem);
                 }
-                
+                return todoArray;
             }
 
 
@@ -83,8 +104,8 @@ function createToDoItem(name, idFromlocalstorage) {
     //     case false: 
     //     id = id + 1;
     //     break;}
-
-
+    idCounter();
+    id = id + 1;
     const createItem = (arr) => {
         const itemObj = {};
         itemObj.name = addMessage.value;
@@ -98,6 +119,9 @@ function createToDoItem(name, idFromlocalstorage) {
     };
     createItem(todoArray);
     localStorage.setItem(key, JSON.stringify(todoArray));
+   
+    localStorage.setItem(key+'id', JSON.stringify(id));
+
     
     
 
