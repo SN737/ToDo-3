@@ -19,9 +19,7 @@ function idCounter(){
     } else {
 
     let arr =  JSON.parse(localStorage.getItem(key+'id'));
-   
     id = arr;
-    alert(id);
     return id;}
 
 }
@@ -30,12 +28,22 @@ function idCounter(){
 function markAsDone(doneBtn, tdItem){
     doneBtn.addEventListener('click', ()=> {
         tdItem.classList.toggle('done');
-
-        // localStorage.setItem(key, JSON.stringify(tditem));
-        // tdItem.id 
+        // let currentId = doneBtn.getAttribute('id');
         
-    });
-}
+        // let arr =  JSON.parse(localStorage.getItem(key));
+        // alert ('читаем массив' + arr)
+        // let newArray = arr.map(obj => {
+        //     if (currentId === obj.id){
+        //         obj.done = true;}
+        //     } );
+        //     alert ('массив после перебора' + newArray)
+        //     localStorage.setItem(key, JSON.stringify(newArray));  
+        });
+
+        //const newArr = arr.filter(obj => obj.id != item.id);
+                      
+    }
+
 
 addMessage.addEventListener('input', () => {
     if(!addMessage.value.length){
@@ -70,7 +78,7 @@ function checkLocalstorage() {
     let localStorageData = localStorage.getItem(key);
         if (localStorageData == null) {
             //alert ('данных нет идём сюда')
-            todoArray = [];
+            return [];
             
             } else {
 
@@ -128,7 +136,7 @@ function createToDoItem(name, idFromlocalstorage) {
     addMessage.value ='';
    
    
-  };
+  }
 
   function displayMessages(name, idFromlocalstorage){
     
@@ -150,6 +158,10 @@ function createToDoItem(name, idFromlocalstorage) {
     btnWrapper.append(doneBtn, deleteBtn);
     deleteBtn.classList.add('btndel');
     doneBtn.classList.add('btndel');
+    tdItem.setAttribute('id', idFromlocalstorage);
+    doneBtn.setAttribute('id', idFromlocalstorage);
+    deleteBtn.setAttribute('id', idFromlocalstorage);
+    
 
     tdItem.append(btnWrapper);
     todo.append(tdItem);
