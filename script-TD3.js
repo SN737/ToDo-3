@@ -13,59 +13,52 @@ let todoArray = checkLocalstorage();
 
 function idCounter(){
     let localStorageData = localStorage.getItem(key+'id');
-    if (localStorageData == null) {
-        id = 0;
-        return id;    
-    } else {
-
-    let arr =  JSON.parse(localStorage.getItem(key+'id'));
-    id = arr;
-    return id;}
-
+    if (localStorageData !== null) {
+       let arr =  JSON.parse(localStorage.getItem(key+'id'));
+        id = arr;
+        return id;}
 }
 
 
 function markAsDone(doneBtn, tdItem){
     doneBtn.addEventListener('click', ()=> {
         tdItem.classList.toggle('done');
-        // let currentId = doneBtn.getAttribute('id');
+        let currentId = doneBtn.getAttribute('id');
+        let arr =  JSON.parse(localStorage.getItem(key));
+       // alert ('читаем массив',  arr);
+        console.log (arr,  'arr');
         
-        // let arr =  JSON.parse(localStorage.getItem(key));
-        // alert ('читаем массив' + arr)
-        // let newArray = arr.map(obj => {
-        //     if (currentId === obj.id){
-        //         obj.done = true;}
-        //     } );
-        //     alert ('массив после перебора' + newArray)
-        //     localStorage.setItem(key, JSON.stringify(newArray));  
+       arr.map(obj => {
+            if (currentId == obj.id & obj.done === false){
+                obj.done = true;
+                
+            }else if (obj.id == currentId & obj.done === true) {
+                obj.done = false;}
+                } );
+            
+
+        localStorage.setItem(key, JSON.stringify(arr));  
         });
 
         //const newArr = arr.filter(obj => obj.id != item.id);
-                      
-    }
+}
 
 
 addMessage.addEventListener('input', () => {
     if(!addMessage.value.length){
         addButton.disabled = true;
     } else{
-        addButton.disabled = false;}
-       
+        addButton.disabled = false;}  
 });
-
 
 addButton.addEventListener('click', (e) => {
     e.preventDefault();
     createToDoItem(addMessage.value);
-
-     //alert ('удаляем тодо');
+    addButton.disabled = true;
     todo.remove();
     checkLocalstorage();
     
 });
-
-
-
 
 
 function checkLocalstorage() {
@@ -73,45 +66,30 @@ function checkLocalstorage() {
     todo = document.createElement('ul');
     todo.classList.add('todo');
     wrapper.append(todo);
-    
-    
+        
     let localStorageData = localStorage.getItem(key);
         if (localStorageData == null) {
             //alert ('данных нет идём сюда')
             return [];
             
             } else {
-
                 //alert ('данные есть идём сюда')
                 let todoArray =  JSON.parse(localStorage.getItem(key));
-                console.log(todoArray);
-                
-                
-                
+                //console.log(todoArray);
+                                
                 for (const obj of todoArray) {
-
-                    //alert (obj.toDoName);
-                let toDoName = obj.name;
-                let idFromlocalstorage = obj.id;
+                    let toDoName = obj.name;
+                    let idFromlocalstorage = obj.id;
                 //alert ('идём рисовать тудуху');
-                const todoItem = displayMessages(toDoName, idFromlocalstorage);
-                markAsDone(todoItem.doneBtn, todoItem.tdItem);
+                     const todoItem = displayMessages(toDoName, idFromlocalstorage);
+                    markAsDone(todoItem.doneBtn, todoItem.tdItem);
                 }
                 return todoArray;
             }
-
-
 }
 
 function createToDoItem(name, idFromlocalstorage) {
 
-    // switch(idFromlocalstorage) {
-    //     case true: 
-    //     id = idFromlocalstorage;
-    //     break;
-    //     case false: 
-    //     id = id + 1;
-    //     break;}
     idCounter();
     id = id + 1;
     const createItem = (arr) => {
@@ -122,30 +100,19 @@ function createToDoItem(name, idFromlocalstorage) {
         itemObj.done = false;
 
         arr.push(itemObj);
-        
-
+      
     };
     createItem(todoArray);
     localStorage.setItem(key, JSON.stringify(todoArray));
    
     localStorage.setItem(key+'id', JSON.stringify(id));
 
-    
-    
-
     addMessage.value ='';
-   
-   
-  }
+}
 
   function displayMessages(name, idFromlocalstorage){
     
-    
     //alert ('пришли - рисуем')
-
-     
-
-    
 
     const tdItem = document.createElement('li');
     const btnWrapper = document.createElement('div');
@@ -166,8 +133,6 @@ function createToDoItem(name, idFromlocalstorage) {
     tdItem.append(btnWrapper);
     todo.append(tdItem);
 
-    
-
     return {
         tdItem,
         doneBtn,
@@ -175,6 +140,6 @@ function createToDoItem(name, idFromlocalstorage) {
         btnWrapper
     };
 
-  }
+}
 
 
