@@ -41,7 +41,9 @@ body {
     margin-top: 10px;
     width: 400px;
     padding: 10px;
-    cursor: pointer; }
+    cursor: pointer;
+    border-radius: 5px;
+   }
   
   .todo {
     padding-left: 0; }
@@ -51,7 +53,7 @@ body {
       .todo li:not(:last-child) {
         border-bottom: 1px solid #000; }
   
-  input[type=checkbox] {
+  /* input[type=checkbox] {
     opacity: 0;
     position: absolute; }
   
@@ -85,7 +87,7 @@ body {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     border-radius: 0;
-    margin: 0 15px 5px 5px; }
+    margin: 0 15px 5px 5px; } */
   
    li{
     display: flex;
@@ -100,9 +102,24 @@ body {
         align-self: flex-end;
         width: 80px;
         margin-left: 1px;
+       
    
-    cursor: pointer;
+    
+    }
 
+    .btndone{
+      
+      align-self: flex-end;
+        width: 80px;
+        margin-left: 1px;
+    }
+
+    .btndel:hover {
+      background-color: #f5acad;
+    }
+
+    .btndone:hover {
+      background-color: #0cf6bb;
 
     }
 

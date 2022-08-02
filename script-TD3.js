@@ -142,7 +142,7 @@ function createToDoItem(name, idFromlocalstorage) {
     tdItem.textContent = name;
     btnWrapper.append(doneBtn, deleteBtn);
     deleteBtn.classList.add('btndel');
-    doneBtn.classList.add('btndel');
+    doneBtn.classList.add('btndone');
     tdItem.setAttribute('id', idFromlocalstorage);
     doneBtn.setAttribute('id', idFromlocalstorage);
     deleteBtn.setAttribute('id', idFromlocalstorage);
