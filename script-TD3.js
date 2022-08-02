@@ -8,9 +8,6 @@ const wrapper = document.querySelector('.wrapper');
 let  todo = document.querySelector('.todo');
 let todoArray = checkLocalstorage();
 
-
-//checkLocalstorage();
-
 function idCounter(){
     let localStorageData = localStorage.getItem(key+'id');
     if (localStorageData !== null) {
@@ -18,7 +15,6 @@ function idCounter(){
         id = arr;
         return id;}
 }
-
 
 function markAsDone(doneBtn, tdItem){
     doneBtn.addEventListener('click', ()=> {
@@ -28,7 +24,7 @@ function markAsDone(doneBtn, tdItem){
        // alert ('читаем массив',  arr);
         console.log (arr,  'arr');
         
-       arr.map(obj => {
+        arr.map(obj => {
             if (currentId == obj.id & obj.done === false){
                 obj.done = true;
                 
@@ -40,7 +36,6 @@ function markAsDone(doneBtn, tdItem){
         localStorage.setItem(key, JSON.stringify(arr));  
         });
 
-        //
 }
 
 function deleteToDo(deleteBtn, tdItem){
@@ -54,11 +49,8 @@ function deleteToDo(deleteBtn, tdItem){
         todoArray = newArr;
         todo.remove();
         checkLocalstorage();
-        
-
     });
 }
-
 
 addMessage.addEventListener('input', () => {
     if(!addMessage.value.length){
@@ -73,26 +65,21 @@ addButton.addEventListener('click', (e) => {
     addButton.disabled = true;
     todo.remove();
     checkLocalstorage();
-    
 });
-
 
 function checkLocalstorage() {
     ////alert ('рисуем пустую тудуху')
     todo = document.createElement('ul');
     todo.classList.add('todo');
     wrapper.append(todo);
-        
     let localStorageData = localStorage.getItem(key);
         if (localStorageData == null) {
             //alert ('данных нет идём сюда')
             return [];
-            
             } else {
                 //alert ('данные есть идём сюда')
                 let todoArray =  JSON.parse(localStorage.getItem(key));
-                //console.log(todoArray);
-                                
+                //console.log(todoArray);                             
                 for (const obj of todoArray) {
                     let toDoName = obj.name;
                     let idFromlocalstorage = obj.id;
@@ -107,7 +94,6 @@ function checkLocalstorage() {
 }
 
 function createToDoItem(name, idFromlocalstorage) {
-
     idCounter();
     id = id + 1;
     const createItem = (arr) => {
@@ -116,22 +102,16 @@ function createToDoItem(name, idFromlocalstorage) {
         itemObj.id = id;
         //itemObj.done = completeTodoItem;
         itemObj.done = false;
-
-        arr.push(itemObj);
-      
+        arr.push(itemObj);     
     };
     createItem(todoArray);
-    localStorage.setItem(key, JSON.stringify(todoArray));
-   
+    localStorage.setItem(key, JSON.stringify(todoArray));   
     localStorage.setItem(key+'id', JSON.stringify(id));
+    addMessage.value ='';}
 
-    addMessage.value ='';
-}
 
-  function displayMessages(name, idFromlocalstorage, done){
-    
-    //alert ('пришли - рисуем')
-
+function displayMessages(name, idFromlocalstorage, done){
+     //alert ('пришли - рисуем')
     const tdItem = document.createElement('li');
     const btnWrapper = document.createElement('div');
     const doneBtn = document.createElement('button');
@@ -153,14 +133,12 @@ function createToDoItem(name, idFromlocalstorage) {
     if (done) {
         tdItem.classList.add('done');
     }
-
     return {
         tdItem,
         doneBtn,
         deleteBtn, 
         btnWrapper
     };
-
 }
 
 
