@@ -51,6 +51,7 @@ function deleteToDo(deleteBtn, tdItem){
         //      if (currentId == obj.id){
         const newArr = arr.filter(obj => obj.id != currentId);
         localStorage.setItem(key, JSON.stringify(newArr));
+        todo.remove();
         checkLocalstorage();
 
     });
