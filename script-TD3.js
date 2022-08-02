@@ -40,7 +40,20 @@ function markAsDone(doneBtn, tdItem){
         localStorage.setItem(key, JSON.stringify(arr));  
         });
 
-        //const newArr = arr.filter(obj => obj.id != item.id);
+        //
+}
+
+function deleteToDo(deleteBtn, tdItem){
+    deleteBtn.addEventListener('click', ()=> {
+        let currentId = deleteBtn.getAttribute('id');
+        let arr =  JSON.parse(localStorage.getItem(key));
+        // arr.map(obj => {
+        //      if (currentId == obj.id){
+        const newArr = arr.filter(obj => obj.id != currentId);
+        localStorage.setItem(key, JSON.stringify(newArr));
+        checkLocalstorage();
+
+    });
 }
 
 
@@ -84,6 +97,7 @@ function checkLocalstorage() {
                 //alert ('идём рисовать тудуху');
                      const todoItem = displayMessages(toDoName, idFromlocalstorage, done);
                     markAsDone(todoItem.doneBtn, todoItem.tdItem);
+                    deleteToDo(todoItem.deleteBtn, todoItem.tdItem);
                 }
                 return todoArray;
             }
