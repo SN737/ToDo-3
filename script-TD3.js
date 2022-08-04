@@ -4,9 +4,29 @@ let id = 0;
 const addMessage = document.querySelector('.input');
 const addButton = document.querySelector('.addbtn');
 const wrapper = document.querySelector('.wrapper');
+const themeBtn = document.querySelector('.themebtn');
 
 let  todo = document.querySelector('.todo');
 let todoArray = checkLocalstorage();
+appinit();
+
+
+function appinit (){
+    changeTheme();
+
+}
+
+function changeTheme(){
+    themeBtn.addEventListener('click', ()=> {
+       let todolist = document.querySelector('.todo_list');
+       let body = document.querySelector('body');
+       todolist.classList.toggle('secondtheme');
+       body.classList.toggle('secondtheme');
+
+       
+
+    });
+}
 
 function idCounter(){
     let localStorageData = localStorage.getItem(key+'id');
@@ -116,6 +136,8 @@ function displayMessages(name, idFromlocalstorage, done){
     const btnWrapper = document.createElement('div');
     const doneBtn = document.createElement('button');
     const deleteBtn = document.createElement('button');
+
+    
 
     doneBtn.textContent = 'готово';
     deleteBtn.textContent = 'удалить';

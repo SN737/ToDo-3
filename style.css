@@ -1,8 +1,40 @@
+@media screen and (max-width: 365px) {
+  input[type=text] {
+    max-width: 240px;
+   }
+
+  button {
+     max-width: 260px;
+  }
+
+  .todo_list {
+    max-width: 360px;
+    padding: 5px;
+  } 
+
+  body {
+    background-color: #A40E11;
+  }
+
+  li{  
+   
+    justify-content: space-between;
+    color: aliceblue;
+    overflow: visible;
+   
+   }
+
+}
+
 body {
     background-color: #bbebda;
     font-family: sans-serif;
     -webkit-box-sizing: content-box;
-    box-sizing: content-box; }
+    box-sizing: content-box; 
+  }
+  
+
+
   
   .container {
     
@@ -22,6 +54,13 @@ body {
     border-radius: 10px;
     -webkit-box-shadow: 0 2px 10px 0 #074b83;
     box-shadow: 0 2px 10px 0 #074b83; }
+
+    .secondtheme {
+      background-color: #0fa8e4;
+    }
+    body.secondtheme{
+      background-color: #0ab2f597;
+    }
   
   h1 {
     text-align: center;
@@ -36,6 +75,10 @@ body {
   input[type=text] {
     width: 376px;
     padding: 10px; }
+
+    
+      
+    
   
   button {
     margin-top: 10px;
@@ -123,4 +166,10 @@ body {
 font-style: italic;
 text-decoration: line-through;
 color: #000;
+    }
+
+    .themebtn {
+      width: 15px;
+      height: 15px;
+     
     }
