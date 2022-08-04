@@ -101,10 +101,7 @@ body {
 
         align-self: flex-end;
         width: 80px;
-        margin-left: 1px;
-       
-   
-    
+        margin-left: 1px;          
     }
 
     .btndone{
@@ -120,12 +117,10 @@ body {
 
     .btndone:hover {
       background-color: #0cf6bb;
-
     }
 
     .done {
 font-style: italic;
 text-decoration: line-through;
 color: #000;
-
     }
