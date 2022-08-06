@@ -56,10 +56,26 @@ body {
     box-shadow: 0 2px 10px 0 #074b83; }
 
     .secondtheme {
-      background-color: #0fa8e4;
+      /* background-color: #0fa8e4; */
+      background-color: #0fa8e4ba;
+    
     }
     body.secondtheme{
-      background-color: #0ab2f597;
+      /* background-color: #0ab2f597; */
+      background-color:#BFDFEC;
+      background-repeat:repeat-x;
+   background-image:url("clouds.png");
+    animation: movement 45s linear infinite; 
+  }
+  
+  @keyframes movement{
+    0% {
+      background-position:0px 0px;
+    }
+    100%{
+      background-position:560px 0px;
+    }
+  }
     }
   
   h1 {
