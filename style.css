@@ -31,11 +31,7 @@ body {
     font-family: sans-serif;
     -webkit-box-sizing: content-box;
     box-sizing: content-box; 
-  }
-  
-
-
-  
+  }  
   .container {
     
     margin: 0 auto;
@@ -76,7 +72,7 @@ body {
       background-position:560px 0px;
     }
   }
-    }
+    
   
   h1 {
     text-align: center;
@@ -115,8 +111,7 @@ body {
   /* input[type=checkbox] {
     opacity: 0;
     position: absolute; }
-  
-  input[type=checkbox], label {
+    input[type=checkbox], label {
     display: inline-block;
     vertical-align: middle;
     margin: 15px;
@@ -152,19 +147,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: aliceblue;
-   
+    color: aliceblue;   
    }
    
     .btndel{
-
         align-self: flex-end;
         width: 80px;
         margin-left: 1px;          
     }
 
-    .btndone{
-      
+    .btndone{      
       align-self: flex-end;
         width: 80px;
         margin-left: 1px;
@@ -177,7 +169,6 @@ body {
     .btndone:hover {
       background-color: #0cf6bb;
     }
-
     .done {
 font-style: italic;
 text-decoration: line-through;
@@ -186,6 +177,5 @@ color: #000;
 
     .themebtn {
       width: 15px;
-      height: 15px;
-     
+      height: 15px;     
     }
