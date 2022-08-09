@@ -154,7 +154,8 @@ function displayMessages(name, idFromlocalstorage, done){
     // tdItem.textContent = name;
     tdItemDiv.textContent = name;
     btnWrapper.append(doneBtn, deleteBtn);
-    tdItemDiv.classList.add('textDiv')
+    btnWrapper.classList.add('btnWrapper');
+    tdItemDiv.classList.add('textDiv');
     deleteBtn.classList.add('btndel');
     doneBtn.classList.add('btndone');
     tdItem.setAttribute('id', idFromlocalstorage);

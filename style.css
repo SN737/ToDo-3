@@ -3,12 +3,13 @@
     max-width: 240px;
    }
 
-  button {
-     max-width: 260px;
+   .mobAddBtn {
+     max-width: 265px;
   }
 
-  .btndel,.btndone{
-    width: 60px;
+  .btndel{
+    width: 65px;
+    margin-top: 2px;
   }
 
   .todo_list {
@@ -21,19 +22,31 @@
   }
 
   li{  
-   
+   display: flex;
+    
     justify-content: space-between;
     color: aliceblue;
     overflow: visible;
-    max-width: 300px;
-    flex-wrap: wrap;
+    max-width: 330px;
+    /* flex-wrap: wrap; */
     
-    
-   
+         
    }
 
+   .textDiv {
+    width: 330px;
+   }
    
-
+   .btnWrapper{
+    display: flex;
+    flex-direction: column;
+    
+    
+   }
+   .todo li {
+    padding: 5px;
+   }
+  
 
 }
 
@@ -171,7 +184,7 @@ body {
 
     .btndone{      
       align-self: flex-end;
-        width: 80px;
+       max-width: 80px;
         margin-left: 1px;
     }
 
