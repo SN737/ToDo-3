@@ -142,6 +142,7 @@ function createToDoItem(name, idFromlocalstorage) {
 function displayMessages(name, idFromlocalstorage, done){
      //alert ('пришли - рисуем')
     const tdItem = document.createElement('li');
+    const tdItemDiv = document.createElement('div');
     const btnWrapper = document.createElement('div');
     const doneBtn = document.createElement('button');
     const deleteBtn = document.createElement('button');
@@ -150,14 +151,16 @@ function displayMessages(name, idFromlocalstorage, done){
 
     doneBtn.textContent = 'готово';
     deleteBtn.textContent = 'удалить';
-    tdItem.textContent = name;
+    // tdItem.textContent = name;
+    tdItemDiv.textContent = name;
     btnWrapper.append(doneBtn, deleteBtn);
+    tdItemDiv.classList.add('textDiv')
     deleteBtn.classList.add('btndel');
     doneBtn.classList.add('btndone');
     tdItem.setAttribute('id', idFromlocalstorage);
     doneBtn.setAttribute('id', idFromlocalstorage);
     deleteBtn.setAttribute('id', idFromlocalstorage);
-    
+    tdItem.append(tdItemDiv);
     tdItem.append(btnWrapper);
     todo.append(tdItem);
 

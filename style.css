@@ -192,3 +192,12 @@ color: #000;
       width: 15px;
       height: 15px;     
     }
+
+    .textDiv{
+      width: 200px;
+     
+      word-break: break-all;
+      
+    }
+
+    
