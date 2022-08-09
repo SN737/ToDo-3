@@ -79,6 +79,15 @@ addMessage.addEventListener('input', () => {
         addButton.disabled = false;}  
 });
 
+addMessage.addEventListener('keypress', (e) => {
+    if(e.keyCode === 13){
+    e.preventDefault();
+    createToDoItem(addMessage.value);
+    addButton.disabled = true;
+    todo.remove();
+    checkLocalstorage();}
+});
+
 addButton.addEventListener('click', (e) => {
     e.preventDefault();
     createToDoItem(addMessage.value);
