@@ -1,4 +1,4 @@
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 360px) {
   input[type=text] {
     max-width: 239px;
    }
@@ -8,15 +8,23 @@
   }
 
   .btndel{
-    width: 65px;
-    margin-top: 2px;
-    text-decoration: none;
+    max-width: 65px;   
+    height: 30px;
+    margin-top: 3px;
+    padding: 1px;
+
     
+  }
+  .btndone{
+    max-width: 65px;
+    margin-top: 3px;
+    height: 30px;
+    padding: 1px;
   }
 
   .todo_list {
     max-width: 360px;
-    padding: 5px;
+    padding: 1px;
   } 
 
   
@@ -27,6 +35,9 @@
     color: aliceblue;
     overflow: visible;
     max-width: 330px;
+    padding: 1em;
+    /* flex-direction: column; */
+    
     /* flex-wrap: wrap; */
     
          
@@ -34,19 +45,23 @@
 
    .textDiv {
     width: 330px;
+    
    }
    
    .btnWrapper{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    /* justify-self: flex-end; */
+    /* align-self: flex-end; */
     text-decoration: none;
+    
    
     
     
     
    }
    .todo li {
-    padding: 5px;
+    padding: 1px;
    }
   
 
@@ -131,7 +146,7 @@ body {
   .todo {
     padding-left: 0; }
     .todo li {
-      padding: 1em;
+      padding: 0.5em;
       list-style-type: none; }
       .todo li:not(:last-child) {
         border-bottom: 1px solid #000; }
@@ -180,7 +195,7 @@ body {
    
     .btndel{
         align-self: flex-end;
-        width: 80px;
+        max-width: 80px;
         margin-left: 1px;          
     }
 
