@@ -50,7 +50,7 @@ function markAsDone(doneBtn, tdItemDiv){
                 
             }else if (obj.id == currentId & obj.done === true) {
                 obj.done = false;}
-                } );
+                });
             
 
         localStorage.setItem(key, JSON.stringify(arr));  
@@ -115,7 +115,7 @@ function checkLocalstorage() {
                     let done = obj.done;
                 //alert ('идём рисовать тудуху');
                      const todoItem = displayMessages(toDoName, idFromlocalstorage, done);
-                    markAsDone(todoItem.doneBtn, todoItem.tdItem);
+                    markAsDone(todoItem.doneBtn, todoItem.tdItemDiv);
                     deleteToDo(todoItem.deleteBtn, todoItem.tdItem);
                 }
                 return todoArray;
