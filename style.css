@@ -10,6 +10,8 @@
   .btndel{
     width: 65px;
     margin-top: 2px;
+    text-decoration: none;
+    
   }
 
   .todo_list {
@@ -17,13 +19,10 @@
     padding: 5px;
   } 
 
-  body {
-    background-color: #A40E11;
-  }
+  
 
   li{  
-   display: flex;
-    
+    display: flex;    
     justify-content: space-between;
     color: aliceblue;
     overflow: visible;
@@ -40,6 +39,9 @@
    .btnWrapper{
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+   
+    
     
     
    }
@@ -212,5 +214,7 @@ color: #000;
       word-break: break-all;
       
     }
-
+    .btnWrapper{
+          
+      text-decoration: none;}
     

@@ -36,9 +36,9 @@ function idCounter(){
         return id;}
 }
 
-function markAsDone(doneBtn, tdItem){
+function markAsDone(doneBtn, tdItemDiv){
     doneBtn.addEventListener('click', ()=> {
-        tdItem.classList.toggle('done');
+        tdItemDiv.classList.toggle('done');
         let currentId = doneBtn.getAttribute('id');
         let arr =  JSON.parse(localStorage.getItem(key));
        // alert ('читаем массив',  arr);
@@ -166,13 +166,14 @@ function displayMessages(name, idFromlocalstorage, done){
     todo.append(tdItem);
 
     if (done) {
-        tdItem.classList.add('done');
+        tdItemDiv.classList.add('done');
     }
     return {
         tdItem,
         doneBtn,
         deleteBtn, 
-        btnWrapper
+        btnWrapper,
+        tdItemDiv
     };
 }
 
