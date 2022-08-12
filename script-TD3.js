@@ -22,6 +22,8 @@ function changeTheme(){
        let body = document.querySelector('body');
        todolist.classList.toggle('secondtheme');
        body.classList.toggle('secondtheme');
+       themeBtn.classList.toggle('btnblue');
+      
 
        
 
