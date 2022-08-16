@@ -23,10 +23,6 @@ function changeTheme(){
        todolist.classList.toggle('secondtheme');
        body.classList.toggle('secondtheme');
        themeBtn.classList.toggle('btnblue');
-      
-
-       
-
     });
 }
 
@@ -53,8 +49,6 @@ function markAsDone(doneBtn, tdItemDiv){
             }else if (obj.id == currentId & obj.done === true) {
                 obj.done = false;}
                 });
-            
-
         localStorage.setItem(key, JSON.stringify(arr));  
         });
 
